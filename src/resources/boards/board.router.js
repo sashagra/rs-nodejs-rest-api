@@ -1,5 +1,15 @@
 const router = require('express').Router();
 const boardsService = require('./board.service');
+const taskRouter = require('../tasks/task.router');
+
+router.use(
+  '/:id/tasks/',
+  (req, res, next) => {
+    req.boardId = req.params.id;
+    next();
+  },
+  taskRouter
+);
 
 router
   .route('/')

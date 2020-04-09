@@ -1,19 +1,18 @@
 const User = require('./user.model');
 
 const users = [
-  new User({ name: 'sasha', login: 'alex', password: 'alehandro' }),
-  new User({ name: 'masha', login: 'maria', password: 'mashka77' }),
-  new User({ name: 'dasha', login: 'daria', password: 'dashka99' })
+  new User({ name: 'name1', login: 'login1', password: 'password1' }),
+  new User({ name: 'name2', login: 'login2', password: 'password2' }),
+  new User({ name: 'name3', login: 'login3', password: 'password3' })
 ];
 
 const getAll = async () => {
+  // TODO: mock implementation. should be replaced during task development
   return users;
 };
 
 const getUser = async id => {
-  const usersBD = await getAll();
-  const user = usersBD.find(c => c.id === id);
-  return user;
+  return (await getAll()).find(user => user.id === id);
 };
 
 const addUser = async user => {
@@ -22,22 +21,22 @@ const addUser = async user => {
 };
 
 const updateUser = async user => {
-  const usersBD = await getAll();
-  const userIndex = usersBD.findIndex(el => el.id === user.id);
+  const allUsers = await getAll();
+  const userIndex = allUsers.findIndex(el => el.id === user.id);
   if (userIndex >= 0) {
-    const oldUser = usersBD[userIndex];
+    const oldUser = allUsers[userIndex];
     const newUser = { ...oldUser, ...user };
-    usersBD.splice(userIndex, 1, newUser);
+    allUsers.splice(userIndex, 1, newUser);
     return newUser;
   }
   return;
 };
 
 const deleteUser = async id => {
-  const usersBD = await getAll();
-  const idx = usersBD.findIndex(el => el.id === id);
-  if (idx >= 0) {
-    usersBD.splice(idx, 1);
+  const allUsers = await getAll();
+  const userIndex = allUsers.findIndex(el => el.id === id);
+  if (userIndex >= 0) {
+    allUsers.splice(userIndex, 1);
     return true;
   }
   return false;

@@ -2,7 +2,7 @@ const { Board, Column } = require('./board.model');
 
 const boards = [
   new Board({
-    title: 'Моя доска',
+    title: 'board1',
     columns: [
       new Column({ title: 'column1', order: 0 }),
       new Column({ title: 'column2', order: 1 }),
@@ -10,7 +10,7 @@ const boards = [
     ]
   }),
   new Board({
-    title: 'Моя вторая доска',
+    title: 'board2',
     columns: [
       new Column({ title: 'column4', order: 0 }),
       new Column({ title: 'column5', order: 1 }),
