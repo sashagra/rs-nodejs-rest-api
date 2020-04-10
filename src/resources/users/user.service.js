@@ -6,14 +6,14 @@ const getAll = () => usersRepo.getAll();
 const getUser = id => usersRepo.getUser(id);
 
 const addUser = user => {
-  if (!user.name || !user.login || !user.password) {
+  if (!user) {
     return;
   }
   return usersRepo.addUser(user);
 };
 
 const updateUser = user => {
-  if (!user.name || !user.login || !user.password) {
+  if (!user) {
     return;
   }
   return usersRepo.updateUser(user);

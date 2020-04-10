@@ -1,0 +1,8 @@
+2020-04-10T17:35:34.656Z error: Запрос на адрес http://localhost:4000/users тип GET
+2020-04-10T17:38:04.296Z error: Запрос на адрес http://localhost:4000/users тип GET с телом [object Object]
+2020-04-10T17:39:11.483Z error: Запрос на адрес http://localhost:4000/users тип GET с телом {}
+2020-04-10T17:40:07.796Z error: Запрос на адрес http://localhost:4000/users тип GET с телом {}
+2020-04-10T17:41:08.457Z error: Запрос на адрес http://localhost:4000/users тип GET с телом {}
+2020-04-10T17:42:10.752Z error: Запрос на адрес http://localhost:4000/users тип GET с телом пусто
+2020-04-10T17:42:39.872Z error: Запрос на адрес http://localhost:4000/users тип POST с телом пусто
+2020-04-10T17:44:05.064Z error: Запрос на адрес http://localhost:4000/users тип POST с телом {"name":"string","login":"string","password":"string"}

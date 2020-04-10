@@ -1,0 +1,12 @@
+2020-04-10T18:03:54.001Z info: App is running on http://localhost:4000
+2020-04-10T18:04:01.697Z info: Запрос на адрес http://localhost:4000/users тип GET с телом пусто с параметрами пусто
+2020-04-10T18:04:13.638Z info: Запрос на адрес http://localhost:4000/users тип POST с телом {"name":"string","login":"string","password":"string"} с параметрами пусто
+2020-04-10T18:04:33.268Z info: Запрос на адрес http://localhost:4000/users/9dbc3174-8f76-4c11-8f8f-025787267b73 тип GET с телом пусто с параметрами пусто
+2020-04-10T18:04:51.144Z info: Запрос на адрес http://localhost:4000/users/9dbc3174-8f76-4c11-8f8f-025787267b73 тип DELETE с телом пусто с параметрами пусто
+2020-04-10T18:06:57.915Z info: App is running on http://localhost:4000
+2020-04-10T18:07:09.149Z info: Запрос на адрес http://localhost:4000/users тип GET с телом пусто с параметрами пусто
+2020-04-10T18:07:20.088Z info: Запрос на адрес http://localhost:4000/users тип POST с телом {"name":"string","login":"string","password":"string"} с параметрами пусто
+2020-04-10T18:07:36.545Z info: Запрос на адрес http://localhost:4000/users/72563881-ebe8-4efb-94ad-7b7af70b8f21 тип GET с телом пусто с параметрами пусто
+2020-04-10T18:07:48.164Z info: Запрос на адрес http://localhost:4000/users/72563881-ebe8-4efb-94ad-7b7af70b8f21 тип PUT с телом {"name":"string","login":"string","password":"string"} с параметрами пусто
+2020-04-10T18:07:56.319Z info: Запрос на адрес http://localhost:4000/users/72563881-ebe8-4efb-94ad-7b7af70b8f21 тип DELETE с телом пусто с параметрами пусто
+2020-04-10T18:09:44.934Z info: Запрос на адрес http://localhost:4000/?g=rr&dd=tt тип GET с телом пусто с параметрами {"g":"rr","dd":"tt"}
