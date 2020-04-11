@@ -1,4 +1,4 @@
-2020-04-11 19:19:13 error: uncaughtException: logdger is not defined
+2020-04-11 19:52:26 error: uncaughtException: logdger is not defined
 ReferenceError: logdger is not defined
     at Server.<anonymous> (/home/sasha/Документы/Projects/IT/Programming/rs-nodejs-rest-api/src/server.js:14:11)
     at Object.onceWrapper (events.js:299:28)
