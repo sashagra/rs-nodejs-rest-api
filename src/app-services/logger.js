@@ -46,12 +46,12 @@ if (process.env.NODE_ENV !== 'production') {
 const loggerReqMiddleware = (req, res, next) => {
   logger.log(
     'info',
-    `Запрос на адрес http://${req.headers.host}${req.url}, тип ${
-      req.method
-    }, с телом ${
-      JSON.stringify(req.body) !== '{}' ? JSON.stringify(req.body) : 'пусто'
-    }, с параметрами ${
-      JSON.stringify(req.query) !== '{}' ? JSON.stringify(req.query) : 'пусто'
+    `Request accepted on adress http://${req.headers.host}${
+      req.url
+    }, the type is ${req.method}, the body: ${
+      JSON.stringify(req.body) !== '{}' ? JSON.stringify(req.body) : 'empty'
+    }, query params: ${
+      JSON.stringify(req.query) !== '{}' ? JSON.stringify(req.query) : 'empty'
     }`
   );
   next();
