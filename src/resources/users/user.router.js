@@ -1,33 +1,22 @@
 const router = require('express').Router();
 const User = require('./user.model');
 const usersService = require('./user.service');
+const { responseHandler } = require('../../app-services/error-handler');
 
 router
   .route('/')
   .get(async (req, res) => {
-    const users = await usersService.getAll();
-    // map user fields to exclude secret fields like "password"
-    res.json(users.map(User.toResponse));
+    await usersService.getAll(res);
   })
 
   .post(async (req, res) => {
-    const newUser = await usersService.addUser(req.body);
-    if (newUser) {
-      res.json(User.toResponse(newUser));
-    } else {
-      res.status(400).send('Bad request');
-    }
+    await usersService.addUser(req.body, res);
   });
 
 router
   .route('/:id')
   .get(async (req, res) => {
-    const user = await usersService.getUser(req.params.id);
-    if (user) {
-      res.json(User.toResponse(user));
-    } else {
-      res.status(404).send('User not found');
-    }
+    await usersService.getUser(req.params.id, res);
   })
 
   .put(async (req, res) => {
@@ -38,7 +27,8 @@ router
     if (newUser) {
       res.json(User.toResponse(newUser));
     } else {
-      res.status(400).send('Bad request');
+      const response = responseHandler(400, 'Bad request', res);
+      response();
     }
   })
 
@@ -46,7 +36,8 @@ router
     if (await usersService.deleteUser(req.params.id)) {
       res.status(204).end();
     } else {
-      res.status(404).send('User not found');
+      const response = responseHandler(404, 'User not found', res);
+      response();
     }
   });
 

@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const boardsService = require('./board.service');
 const taskRouter = require('../tasks/task.router');
+const { responseHandler } = require('../../app-services/error-handler');
 
 router.use(
   '/:id/tasks/',
@@ -22,7 +23,8 @@ router
     if (newBoard) {
       res.json(newBoard);
     } else {
-      res.status(400).send('Bad request');
+      const response = responseHandler(400, 'Bad request', res);
+      response();
     }
   });
 
@@ -33,7 +35,8 @@ router
     if (board) {
       res.json(board);
     } else {
-      res.status(404).send('Board not found');
+      const response = responseHandler(404, 'Board not found', res);
+      response();
     }
   })
   .put(async (req, res) => {
@@ -41,14 +44,16 @@ router
     if (board) {
       res.json(board);
     } else {
-      res.status(400).send('Bad request');
+      const response = responseHandler(400, 'Bad request', res);
+      response();
     }
   })
   .delete(async (req, res) => {
     if (await boardsService.deleteBoard(req.params.id)) {
       res.status(204).end();
     } else {
-      res.status(404).send('Board not found');
+      const response = responseHandler(404, 'Board not found', res);
+      response();
     }
   });
 

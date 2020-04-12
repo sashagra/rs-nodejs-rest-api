@@ -1,15 +1,25 @@
 const {
-  INTERNAL_SERVER_ERROR,
   BAD_REQUEST,
+  INTERNAL_SERVER_ERROR,
   getStatusText
 } = require('http-status-codes');
+const { logger } = require('./logger');
 
 class AppError {
-  constructor() {
-    this.status = BAD_REQUEST;
-    this.message = getStatusText(this.status);
+  constructor(status) {
+    this.status = status || BAD_REQUEST;
+    this.message = getStatusText(this.status || BAD_REQUEST);
   }
 }
+
+const responseHandler = (resCode, resMessage, res) => {
+  logger.error(
+    `Response to client with code ${resCode}, message: ${resMessage}`
+  );
+  return () => {
+    res.status(resCode).send(resMessage);
+  };
+};
 
 const errorHandler = (err, req, res, next) => {
   if (err instanceof AppError) {
@@ -22,4 +32,4 @@ const errorHandler = (err, req, res, next) => {
   next(err);
 };
 
-module.exports = { errorHandler, AppError };
+module.exports = { errorHandler, responseHandler, AppError };
