@@ -17,10 +17,6 @@ const logger = createLogger({
       format: format.combine(format.uncolorize(), format.json()),
       filename: path.join(__dirname, '../logs/error.log')
     }),
-    // new transports.Console({
-    //   level: 'error',
-    //   format: format.combine(format.colorize(), format.cli())
-    // }),
     new transports.File({
       level: 'info',
       filename: path.join(__dirname, '../logs/info.log')
