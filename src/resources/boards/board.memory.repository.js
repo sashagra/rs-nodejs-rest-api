@@ -1,23 +1,5 @@
 const { Board, Column } = require('./board.model');
-
-const boards = [
-  new Board({
-    title: 'board1',
-    columns: [
-      new Column({ title: 'column1', order: 0 }),
-      new Column({ title: 'column2', order: 1 }),
-      new Column({ title: 'column3', order: 2 })
-    ]
-  }),
-  new Board({
-    title: 'board2',
-    columns: [
-      new Column({ title: 'column4', order: 0 }),
-      new Column({ title: 'column5', order: 1 }),
-      new Column({ title: 'column6', order: 2 })
-    ]
-  })
-];
+const { boards } = require('../../app-services/db-client');
 
 const getAll = async () => boards;
 

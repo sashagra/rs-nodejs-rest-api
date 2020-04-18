@@ -1,12 +1,5 @@
 const Task = require('./task.model');
-
-const tasks = [
-  new Task({
-    title: 'INITIAL_TASK',
-    order: 100,
-    description: 'INITIAL_TASK_DESCRIPTION'
-  })
-];
+const { tasks } = require('../../app-services/db-client');
 
 const addTask = async task => {
   const newTask = new Task(task);
