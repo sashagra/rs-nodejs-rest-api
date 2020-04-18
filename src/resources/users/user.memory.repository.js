@@ -17,7 +17,7 @@ const addUser = async user => {
 };
 
 const updateUser = async user => {
-  return User.findByIdAndUpdate({ _id: user.id }, user);
+  return User.findOneAndUpdate({ _id: user.id }, user);
   // const allUsers = await getAll();
   // const userIndex = allUsers.findIndex(el => el.id === user.id);
   // if (userIndex >= 0) {

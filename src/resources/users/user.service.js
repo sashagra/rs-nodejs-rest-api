@@ -34,11 +34,12 @@ const addUser = async (user, res) => {
   }
 };
 
-const updateUser = user => {
+const updateUser = async user => {
+  user = await usersRepo.updateUser(user);
   if (!user) {
     return;
   }
-  return usersRepo.updateUser(user);
+  return usersRepo.getUser(user.id);
 };
 
 const deleteUser = async id => {
