@@ -1,45 +1,70 @@
-const { Board, Column } = require('./board.model');
-const { boards } = require('../../app-services/db-client');
+const { Board } = require('./board.model');
 
-const getAll = async () => boards;
-
-const getBoard = async id => (await getAll()).find(board => board.id === id);
-
-const addBoard = async board => {
-  const newBoard = new Board({
-    title: board.title,
-    columns: []
-  });
-  for (const column of board.columns) {
-    newBoard.columns.push(new Column(column));
+const getAll = async () => {
+  const boards = await Board.find({});
+  if (!boards) {
+    return;
   }
-  boards.push(newBoard);
-  return newBoard;
+  return boards.map(board => Board.toResponse(board));
 };
 
-const updateBoard = async (id, board) => {
-  const boardIndex = boards.findIndex(i => i.id === id);
-  if (boardIndex === -1) return;
-  const currentBoard = await getBoard(id);
-  for (const column of board.columns) {
-    if (!column.id) return;
-    const currentColumn = currentBoard.columns.find(
-      col => col.id === column.id
-    );
-    if (!currentColumn) continue;
-    currentColumn.title = column.title;
-    currentColumn.order = column.order;
+const getBoard = async id => {
+  const board = await Board.findById({ _id: id });
+  if (!board) {
+    return;
   }
-  currentBoard.id = board.id;
-  currentBoard.title = board.title;
-  return board;
+  return Board.toResponse(board);
+};
+
+const addBoard = async board => {
+  board = await Board.create(board);
+  if (!board) {
+    return;
+  }
+  return Board.toResponse(board);
+};
+// {
+//   const newBoard = new Board({
+//     title: board.title,
+//     columns: []
+//   });
+//   for (const column of board.columns) {
+//     newBoard.columns.push(new Column(column));
+//   }
+//   boards.push(newBoard);
+//   return newBoard;
+// };
+
+const updateBoard = async (id, board) => {
+  const upadatedBoard = await Board.findOneAndUpdate({ _id: id }, board);
+  console.log('-------------', upadatedBoard._id, id);
+  if (!board) {
+    return;
+  }
+  return Board.toResponse(await Board.findById({ _id: upadatedBoard._id }));
+  // const boardIndex = boards.findIndex(i => i.id === id);
+  // if (boardIndex === -1) return;
+  // const currentBoard = await getBoard(id);
+  // for (const column of board.columns) {
+  //   if (!column.id) return;
+  //   const currentColumn = currentBoard.columns.find(
+  //     col => col.id === column.id
+  //   );
+  //   if (!currentColumn) continue;
+  //   currentColumn.title = column.title;
+  //   currentColumn.order = column.order;
+  // }
+  // currentBoard.id = board.id;
+  // currentBoard.title = board.title;
+  // return board;
 };
 
 const deleteBoard = async id => {
-  const boardIndex = boards.findIndex(i => i.id === id);
-  if (boardIndex === -1) return;
-  boards.splice(boardIndex, 1);
-  return true;
+  return Board.deleteOne({ _id: id });
+  // const boardIndex = boards.findIndex(i => i.id === id);
+  // if (boardIndex === -1) return;
+  // boards.splice(boardIndex, 1);
+  // return true;
 };
 
 module.exports = { getAll, getBoard, addBoard, updateBoard, deleteBoard };

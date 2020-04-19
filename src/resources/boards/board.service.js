@@ -6,10 +6,10 @@ const getAll = () => boardsRepo.getAll();
 const getBoard = id => boardsRepo.getBoard(id);
 
 const addBoard = board => {
-  if (!board.title || !board.columns[0]) return;
-  for (const column of board.columns) {
-    if (!column.title || !Number.isInteger(column.order)) return;
-  }
+  // if (!board.title || !board.columns[0]) return;
+  // for (const column of board.columns) {
+  //   if (!column.title || !Number.isInteger(column.order)) return;
+  // }
   return boardsRepo.addBoard(board);
 };
 

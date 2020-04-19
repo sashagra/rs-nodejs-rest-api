@@ -32,7 +32,7 @@ const boards = [
 const tasks = [
   new Task({
     title: 'INITIAL_TASK',
-    order: 100,
+    order: 1,
     description: 'INITIAL_TASK_DESCRIPTION'
   })
 ];
@@ -49,6 +49,7 @@ const connectToDB = fn => {
   db.once('open', async () => {
     await db.dropDatabase();
     users.forEach(user => user.save());
+    boards.forEach(board => board.save());
     logger.info('DB connection successful');
     fn();
   });
