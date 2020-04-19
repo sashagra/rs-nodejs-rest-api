@@ -39,9 +39,11 @@ const updateUser = async user => {
 };
 
 const deleteUser = async id => {
-  const isDeleted = usersRepo.deleteUser(id);
-  if (isDeleted) await unassignTasks(id);
-  return isDeleted;
+  const isDeleted = await usersRepo.deleteUser(id);
+  if (isDeleted.n > 0) {
+    await unassignTasks(id);
+  }
+  return isDeleted.n;
 };
 
 module.exports = { getAll, getUser, addUser, updateUser, deleteUser };

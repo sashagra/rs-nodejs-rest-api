@@ -10,11 +10,12 @@ const addBoard = board => boardsRepo.addBoard(board);
 const updateBoard = (id, board) => boardsRepo.updateBoard(id, board);
 
 const deleteBoard = async id => {
-  const isDeleted = boardsRepo.deleteBoard(id);
-  if (isDeleted) {
+  const isDeleted = await boardsRepo.deleteBoard(id);
+  if (isDeleted.n) {
     await deleteTasks(id);
+    return isDeleted;
   }
-  return isDeleted;
+  return;
 };
 
 module.exports = { getAll, getBoard, addBoard, updateBoard, deleteBoard };

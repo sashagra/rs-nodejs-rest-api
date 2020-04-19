@@ -24,7 +24,7 @@ const updateTask = async (boardId, taskId, task) => {
 };
 
 const deleteTask = async (boardId, taskId) =>
-  Task.deleteOne({ _id: taskId, boardId });
+  (await Task.deleteOne({ _id: taskId, boardId })).n ? 1 : 0;
 
 const unassignTasks = async userId => {
   await Task.updateMany({ userId }, { userId: null });

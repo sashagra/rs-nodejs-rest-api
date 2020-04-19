@@ -39,7 +39,8 @@ router
 
   .delete(
     errorCatcher(async (req, res) => {
-      if (await usersService.deleteUser(req.params.id)) {
+      const isDeleted = await usersService.deleteUser(req.params.id);
+      if (isDeleted) {
         res.status(204).end();
       } else {
         const response = responseHandler(404, 'User not found', res);

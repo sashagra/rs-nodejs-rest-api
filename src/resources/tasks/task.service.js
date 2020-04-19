@@ -1,6 +1,8 @@
 const tasksRepo = require('./task.memory.repository');
+const boardservice = require('../boards/board.service');
 
-const addTask = task => tasksRepo.addTask(task);
+const addTask = async task =>
+  (await boardservice.getBoard(task.boardId)) ? tasksRepo.addTask(task) : 0;
 
 const getAll = async boardId => tasksRepo.getAll(boardId);
 
