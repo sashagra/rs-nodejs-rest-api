@@ -3,6 +3,7 @@ const { Board, Column } = require('../resources/boards/board.model');
 const User = require('../resources/users/user.model');
 const { logger } = require('./logger');
 const mongoose = require('mongoose');
+const { MONGO_CONNECTION_STRING } = require('../common/config');
 
 const users = [
   new User({ name: 'name1', login: 'login1', password: 'password1' }),
@@ -38,7 +39,7 @@ const tasks = [
 ];
 
 const connectToDB = fn => {
-  mongoose.connect(process.env.MONGO_CONNECTION_STRING, {
+  mongoose.connect(MONGO_CONNECTION_STRING, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false

@@ -5,17 +5,9 @@ const getAll = () => boardsRepo.getAll();
 
 const getBoard = id => boardsRepo.getBoard(id);
 
-const addBoard = board => {
-  // if (!board.title || !board.columns[0]) return;
-  // for (const column of board.columns) {
-  //   if (!column.title || !Number.isInteger(column.order)) return;
-  // }
-  return boardsRepo.addBoard(board);
-};
+const addBoard = board => boardsRepo.addBoard(board);
 
-const updateBoard = (id, board) => {
-  return boardsRepo.updateBoard(id, board);
-};
+const updateBoard = (id, board) => boardsRepo.updateBoard(id, board);
 
 const deleteBoard = async id => {
   const isDeleted = boardsRepo.deleteBoard(id);

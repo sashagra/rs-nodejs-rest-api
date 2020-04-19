@@ -8,24 +8,18 @@ const {
 
 router
   .route('/')
-  .get(
-    errorCatcher(async (req, res) => {
-      await usersService.getAll(res);
-    })
-  )
+  .get(errorCatcher(async (req, res) => await usersService.getAll(res)))
 
   .post(
-    errorCatcher(async (req, res) => {
-      await usersService.addUser(req.body, res);
-    })
+    errorCatcher(async (req, res) => await usersService.addUser(req.body, res))
   );
 
 router
   .route('/:id')
   .get(
-    errorCatcher(async (req, res) => {
-      await usersService.getUser(req.params.id, res);
-    })
+    errorCatcher(
+      async (req, res) => await usersService.getUser(req.params.id, res)
+    )
   )
 
   .put(

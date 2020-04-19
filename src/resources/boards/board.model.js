@@ -1,21 +1,6 @@
 const uuid = require('uuid');
 const mongoose = require('mongoose');
 
-// class Board {
-//   constructor({ id = uuid(), title = 'BOARD', columns = [] } = {}) {
-//     this.id = id;
-//     this.title = title;
-//     this.columns = columns;
-//   }
-// }
-
-// class Column {
-//   constructor({ id = uuid(), title = 'COLUMN', order = null } = {}) {
-//     this.id = id;
-//     this.title = title;
-//     this.order = order;
-//   }
-// }
 const columnSchema = new mongoose.Schema({
   title: String,
   order: Number,

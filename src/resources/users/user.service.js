@@ -25,7 +25,6 @@ const getUser = async (id, res) => {
 
 const addUser = async (user, res) => {
   const newUser = await usersRepo.addUser(user);
-
   if (!newUser) {
     const response = responseHandler(400, 'Bad request', res);
     response();
@@ -36,17 +35,12 @@ const addUser = async (user, res) => {
 
 const updateUser = async user => {
   user = await usersRepo.updateUser(user);
-  if (!user) {
-    return;
-  }
-  return usersRepo.getUser(user.id);
+  return user ? usersRepo.getUser(user.id) : 0;
 };
 
 const deleteUser = async id => {
   const isDeleted = usersRepo.deleteUser(id);
-  if (isDeleted) {
-    await unassignTasks(id);
-  }
+  if (isDeleted) await unassignTasks(id);
   return isDeleted;
 };
 
