@@ -9,13 +9,13 @@ const mongoose = require('mongoose');
 //   }
 // }
 
-class Column {
-  constructor({ id = uuid(), title = 'COLUMN', order = null } = {}) {
-    this.id = id;
-    this.title = title;
-    this.order = order;
-  }
-}
+// class Column {
+//   constructor({ id = uuid(), title = 'COLUMN', order = null } = {}) {
+//     this.id = id;
+//     this.title = title;
+//     this.order = order;
+//   }
+// }
 const columnSchema = new mongoose.Schema({
   title: String,
   order: Number,
@@ -36,7 +36,7 @@ const boardSchema = new mongoose.Schema({
   }
 });
 
-boardSchema.statics.toResponse = function toResponse(board) {
+boardSchema.statics.toResponse = board => {
   const { id, title, columns } = board;
   return {
     id,
@@ -49,6 +49,8 @@ boardSchema.statics.toResponse = function toResponse(board) {
     }))
   };
 };
+
+const Column = mongoose.model('Column', columnSchema);
 
 const Board = mongoose.model('Board', boardSchema);
 

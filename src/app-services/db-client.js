@@ -31,9 +31,9 @@ const boards = [
 
 const tasks = [
   new Task({
-    title: 'INITIAL_TASK',
+    title: 'Task #1',
     order: 1,
-    description: 'INITIAL_TASK_DESCRIPTION'
+    description: 'Desc'
   })
 ];
 
@@ -50,7 +50,8 @@ const connectToDB = fn => {
     await db.dropDatabase();
     users.forEach(user => user.save());
     boards.forEach(board => board.save());
-    logger.info('DB connection successful');
+    tasks.forEach(task => task.save());
+    logger.info('MongoDB connection successful');
     fn();
   });
 };

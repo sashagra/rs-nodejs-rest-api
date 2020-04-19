@@ -37,10 +37,7 @@ const addBoard = async board => {
 
 const updateBoard = async (id, board) => {
   const upadatedBoard = await Board.findOneAndUpdate({ _id: id }, board);
-  console.log('-------------', upadatedBoard._id, id);
-  if (!board) {
-    return;
-  }
+  if (!upadatedBoard) return;
   return Board.toResponse(await Board.findById({ _id: upadatedBoard._id }));
   // const boardIndex = boards.findIndex(i => i.id === id);
   // if (boardIndex === -1) return;
