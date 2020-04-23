@@ -21,7 +21,6 @@ router
       if (isPasswordCorrect) {
         const payload = { sub: employee.id, login: employee.login };
         const token = jwt.sign(payload, JWT_SECRET_KEY, { expiresIn: 60 * 60 });
-        console.log('==============================\n', token);
         res.send({ token });
       } else {
         res.status(403).send('Incorrect login or password');
