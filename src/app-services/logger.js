@@ -55,9 +55,8 @@ const loggerReqMiddleware = (req, res, next) => {
 
 const loggerErrMiddleware = (err, req, res, next) => {
   logger.error(
-    `From loggerErrMiddleware ${res.statusCode} ${res.statusMessage}`
+    `From loggerErrMiddleware ${res.statusCode} ${res.statusMessage}.\n Details: ${err}`
   );
-  err++;
   next();
 };
 

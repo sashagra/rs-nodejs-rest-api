@@ -8,7 +8,7 @@ const { MONGO_CONNECTION_STRING } = require('../common/config');
 const users = [
   new User({ name: 'name1', login: 'login1', password: 'password1' }),
   new User({ name: 'name2', login: 'login2', password: 'password2' }),
-  new User({ name: 'name3', login: 'login3', password: 'password3' })
+  new User({ name: 'admin', login: 'admin', password: 'admin' })
 ];
 
 const boards = [

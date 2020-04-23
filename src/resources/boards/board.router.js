@@ -40,7 +40,6 @@ router
   .get(
     errorCatcher(async (req, res) => {
       const board = await boardsService.getBoard(req.params.id);
-      console.log(board);
       if (board) {
         res.json(board);
       } else {
